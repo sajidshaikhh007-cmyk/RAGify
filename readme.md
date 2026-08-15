@@ -19,73 +19,25 @@ run ---(main.py) file
 
 COMPLETE WORKFLOW:
 
+PDF
+ │
+ ▼
+Load → Chunk → Embed → Vector DB
+                         ▲
+                         │
+User Question → Embed → Search
+                         │
+                         ▼
+                  Relevant Chunks
+                         │
+                         ▼
+                  Context + Query
+                         │
+                         ▼
+                        LLM
+                         │
+                         ▼
+                     Answer
 
 
-                    ┌─────────────────────┐
-                    │      User           │
-                    │   Uploads PDF       │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │    PDF Loader       │
-                    │ Extract PDF Text    │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │   Text Splitter     │
-                    │ Split into Chunks    │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │     Embedding       │
-                    │ Text → Vectors      │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │    Vector Store     │
-                    │   Store Embeddings  │
-                    └──────────┬──────────┘
-                               │
-                               │
-            ┌──────────────────┘
-            │
-            ▼
-┌─────────────────────┐
-│    User Question    │
-│ "What is RAG?"      │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Question Embedding  │
-│ Question → Vector   │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Similarity Search   │
-│ Find relevant       │
-│ document chunks     │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│ Context + Question  │
-│      ↓              │
-│      LLM            │
-└──────────┬──────────┘
-           │
-           ▼
-┌─────────────────────┐
-│      Answer         │
-│ Generated using     │
-│ retrieved context   │
-└─────────────────────┘
-
-
-
-
+                  
